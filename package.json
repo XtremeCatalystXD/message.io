@@ -1,0 +1,23 @@
+{
+  "name": "message.io",
+  "version": "1.0.0",
+  "description": "Welcome to a project by Blaze252 and Zucchini :) - yeet.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XtremeCatalystXD/message.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XtremeCatalystXD/message.io/issues"
+  },
+  "homepage": "https://github.com/XtremeCatalystXD/message.io#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.1.1"
+  }
+}
