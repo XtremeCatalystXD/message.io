@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Snowman</title>
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <form id="userForm" onsubmit="setUsername(); return false">
+                <label for="username">Enter a Username: </label>
+                <input type="text" id="username">
+                <input type="submit">
+            </form>
+            <span id="userFormMessage"></span>
+            <div id="chat">
+                <div id="chatMessages"></div>
+                <form id="messageForm" onsubmit="sendMessage(); return false">
+                    <label for="message">Enter a message: </label>
+                    <input type="text" id="message">
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

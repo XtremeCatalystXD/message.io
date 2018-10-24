@@ -1,0 +1,28 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    flex-direction: column;
+}
+
+#header {
+    height: 10vh;
+}
+
+#chatMessages {
+    position: fixed;
+    height: 84vh;
+    bottom: 6vh;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+#messageForm {
+    height: 5vh;
+    position: fixed;
+    bottom: 0;
+    font-size: 3vh;
+    margin: auto;
+}
