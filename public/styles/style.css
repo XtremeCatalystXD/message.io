@@ -1,28 +1,50 @@
 html {
     height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    min-height: 100%;
+    height: 100%;
     flex-direction: column;
+    background-color: darkslateblue;
+    color: whitesmoke;
 }
 
-#header {
-    height: 10vh;
+section {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    margin:auto;
 }
 
-#chatMessages {
-    position: fixed;
-    height: 84vh;
-    bottom: 6vh;
-    overflow-y: scroll;
-    width: 100%;
+header {
+    background: #202020;
+    text-align: center;
 }
 
-#messageForm {
-    height: 5vh;
-    position: fixed;
-    bottom: 0;
+#userForm {
+    font-size: 28px;
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+#content {
+    flex: 2;
+    display: flex;
+    align-items: flex-end;
+    overflow: auto;
+}
+
+footer input[type="text"] {
+    flex: 1;
+  }
+
+footer {
+    min-height: 5vh;
+    /*position: fixed;
+    bottom: 0;*/
     font-size: 3vh;
     margin: auto;
 }

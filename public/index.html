@@ -1,28 +1,27 @@
 <html>
     <head>
         <title>Snowman</title>
-        <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     </head>
     <body>
-        <div id="header"></div>
-        <div id="content">
-            <form id="userForm" onsubmit="setUsername(); return false">
-                <label for="username">Enter a Username: </label>
-                <input type="text" id="username">
-                <input type="submit">
-            </form>
-            <span id="userFormMessage"></span>
-            <div id="chat">
-                <div id="chatMessages"></div>
-                <form id="messageForm" onsubmit="sendMessage(); return false">
-                    <label for="message">Enter a message: </label>
-                    <input type="text" id="message">
-                    <input type="submit" value="Send">
+        <section>
+            <header></header>
+            <div id="content">
+                <form id="userForm" onsubmit="setUsername(); return false">
+                    <input type="text" id="username" required="required" placeholder="Username"> 
+                    <input type="submit" value="Set">
                 </form>
+                <span id="userFormMessage"></span>
+
+                <div id="chatMessages"></div>
             </div>
-        </div>
+            <footer></footer>
+        </section>
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="index.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="styles/style.css">        
     </body>
 </html>
