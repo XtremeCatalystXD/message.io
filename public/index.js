@@ -14,11 +14,12 @@ function sendMessage() {
 }
 
 socket.on('valid-username', function() {
-    document.getElementById('userForm').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('content').style.display = 'flex';
     //document.getElementById('chat').style.display = '';
     document.getElementById('userFormMessage').style.display = 'none';
     document.getElementsByTagName('header')[0].innerHTML = "Welcome, <b>" + username + "</b>!";
-    document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><label for='message'>Enter a message: </label><input type='text' id='message'><input type='submit' value='Send'></form>";
+    document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><input type='text' id='message' placeholder='Enter message...'><input type='submit' value='Send'></form>";
 });
 
 socket.on('invalid-username', function(data) {

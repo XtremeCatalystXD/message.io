@@ -7,13 +7,14 @@
     <body>
         <section>
             <header></header>
-            <div id="content">
+            <div id="loginForm">
                 <form id="userForm" onsubmit="setUsername(); return false">
                     <input type="text" id="username" required="required" placeholder="Username"> 
                     <input type="submit" value="Set">
                 </form>
                 <span id="userFormMessage"></span>
-
+            </div>
+            <div id="content">
                 <div id="chatMessages"></div>
             </div>
             <footer></footer>
