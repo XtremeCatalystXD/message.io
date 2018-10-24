@@ -19,7 +19,7 @@ socket.on('valid-username', function() {
     //document.getElementById('chat').style.display = '';
     document.getElementById('userFormMessage').style.display = 'none';
     document.getElementsByTagName('header')[0].innerHTML = "Welcome, <b>" + username + "</b>!";
-    document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><input type='text' id='message' placeholder='Enter message...'><input type='submit' value='Send'></form>";
+    document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><input type='text' class='form-control' id='message' placeholder='Enter message...'><button type='submit' class='btn btn-primary btn-success'><span class='glyphicon glyphicon-envelope'></span> Send</button></form>";
 });
 
 socket.on('invalid-username', function(data) {
