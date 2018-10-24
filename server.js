@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 io.on('connection', function(socket) {
     console.log(socket.id);
-    
+
     socket.on('send-username', function(username) {
         if (users.includes(username)) {
             socket.emit('invalid-username', username);
@@ -23,6 +23,7 @@ io.on('connection', function(socket) {
             users.push(socket.username);
             console.log(users);
             socket.emit('valid-username');
+            io.emit('userConnect', socket.username);
         }
     });
 
@@ -32,6 +33,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function() {
+        io.emit('userDisconnect', socket.username);
         console.log(socket.username + ' disconnected.');
         users.pop(socket.username);
     });
