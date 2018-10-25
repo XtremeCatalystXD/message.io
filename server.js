@@ -22,7 +22,7 @@ io.on('connection', function(socket) {
             socket.username = username;
             users.push(socket.username);
             console.log(users);
-            socket.emit('valid-username');
+            socket.emit('valid-username', users);
             io.emit('userConnect', socket.username);
         }
     });
