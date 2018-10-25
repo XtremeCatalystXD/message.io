@@ -32,10 +32,41 @@ header {
 }
 
 #content {
-    flex: 2;
+    flex: 95;
     display: none;
     flex-direction: column-reverse;
     overflow: auto;
+}
+
+#onlineUsers {
+    display: none;
+    flex-direction: row;
+    flex: 5;
+    width: 85%;
+    align-items: center;
+    align-self: center;
+    margin: 8px 0;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+#user {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 3px 8px;
+    margin: 0 4px;
+    align-self: center;
+    display: inline-flex;
+}
+
+.fas.fa-circle {
+    color: greenyellow;
+    align-self: center;
+    margin: 0 5px;
+}
+
+#offline.fas.fa-circle {
+    color: #666;
 }
 
 #chatMessages {
