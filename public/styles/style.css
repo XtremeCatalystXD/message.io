@@ -99,3 +99,7 @@ footer {
     align-self: center;
     padding-bottom: 8px;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
