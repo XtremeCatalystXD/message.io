@@ -25,7 +25,7 @@ socket.on('valid-username', function(currentUsers) {
     document.getElementById('onlineUsers').style.display = 'flex';
     document.getElementById('userFormMessage').style.display = 'none';
     document.getElementsByTagName('header')[0].innerHTML = "Welcome, <b>" + username + "</b>!";
-    document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><input type='text' class='form-control' id='message' placeholder='Enter message...'><button type='submit' class='btn btn-primary btn-success'><i class='fas fa-envelope'></i> Send</button></form>";
+    document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><input type='text' class='form-control' id='message' placeholder='Enter message...' autocomplete='off'><button type='submit' class='btn btn-primary btn-success'><i class='fas fa-envelope'></i> Send</button></form>";
     onlineUserList = currentUsers;
     updateUsers();
 });
