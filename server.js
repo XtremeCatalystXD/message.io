@@ -33,8 +33,10 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function() {
-        io.emit('userDisconnect', socket.username);
-        console.log(socket.username + ' disconnected.');
-        users.pop(socket.username);
+        if (socket.username != null){
+            io.emit('userDisconnect', socket.username);
+            console.log(socket.username + ' disconnected.');
+            users.splice(users.indexOf(socket.username), 1);
+        }
     });
 });
