@@ -14,7 +14,7 @@ var config = {
 var Request = require('tedious').Request;
 var connection = new Connection(config);
 connection.on('connect', function(err) {
-    console.log("Connected");
+    console.log(err);
 });
 
 http.listen(port, function() {
@@ -22,8 +22,6 @@ http.listen(port, function() {
 });
 
 app.use(express.static('public'));
-
-connection.on('debug', function(err) { console.log('debug:', err);});
 
 io.on('connection', function(socket) {
     console.log(socket.id);
