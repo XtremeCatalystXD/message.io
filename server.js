@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
     console.log(socket.id);
 
     socket.on('login', function(username, password) {
-        request = new Request("SELECT UserExtendedInfo.UserId FROM UserExtendedInfo INNER JOIN Users ON UserExtendedInfo.UserId = Users.UserId WHERE Users.Username = '" + username + "' AND UserExtendedInfo.Password = HASHBYTES('SHA2_256','" + password +  "');", function(err) {  
+        request = new Request("SELECT UserExtendedInfo.UserId FROM UserExtendedInfo INNER JOIN Users ON UserExtendedInfo.UserId = Users.UserId WHERE Users.Username = '" + String(username) + "' AND UserExtendedInfo.Password = HASHBYTES('SHA2_256','" + String(password) +  "');", function(err) {  
             if (err) {
                 console.log(err);
             }
