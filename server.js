@@ -23,6 +23,8 @@ http.listen(port, function() {
 
 app.use(express.static('public'));
 
+connection.on('debug', function(err) { console.log('debug:', err);});
+
 io.on('connection', function(socket) {
     console.log(socket.id);
 
