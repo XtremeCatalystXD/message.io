@@ -5,9 +5,10 @@ var onlineUserList = [];
 var offlineUserList = [];
 var currentUserList = [];
 
-function setUsername() {
+function login() {
     username = document.getElementById('username').value;
-    socket.emit('send-username', username);
+    password = document.getElementById('password').value;
+    socket.emit('login', username, password);
 }
 
 function sendMessage() {
@@ -30,8 +31,8 @@ socket.on('valid-username', function(currentUsers) {
     updateUsers();
 });
 
-socket.on('invalid-username', function(data) {
-    document.getElementById('userFormMessage').innerHTML = data + " is already in use. Try another username.";
+socket.on('invalid-username', function() {
+    document.getElementById('userFormMessage').innerHTML = "Please ensure you have entered the correct details.";
 });
 
 socket.on('newMessage', function(msg, userId) {
