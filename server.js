@@ -11,6 +11,7 @@ var config = {
     password: 'password',  
     // server: <ip address>
 };
+var Request = require('tedious').Request;
 var connection = new Connection(config);
 connection.on('connect', function(err) {
     console.log("Connected");
