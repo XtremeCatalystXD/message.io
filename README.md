@@ -1,2 +1,2 @@
 # message.io
-Welcome to a project by Blaze252 and Zucchini :)
+Welcome to a project by Zucchini :)
