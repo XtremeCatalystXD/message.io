@@ -25,7 +25,7 @@ socket.on('valid-username', function(currentUsers) {
     document.getElementById('content').style.display = 'flex';
     document.getElementById('onlineUsers').style.display = 'flex';
     document.getElementById('userFormMessage').style.display = 'none';
-    document.getElementsByTagName('header')[0].innerHTML = "Welcome, <b>" + username + "</b>!";
+    document.getElementsByTagName('header')[0].innerHTML = "Welcome, <b>" + htmlspecialchars(username) + "</b>!";
     document.getElementsByTagName('footer')[0].innerHTML = "<form id='messageForm' onsubmit='sendMessage(); return false'><input type='text' class='form-control' id='message' placeholder='Enter message...' autocomplete='off'><button type='submit' class='btn btn-primary btn-success'><i class='fas fa-envelope'></i> Send</button></form>";
     onlineUserList = currentUsers;
     updateUsers();
@@ -39,9 +39,9 @@ socket.on('newMessage', function(msg, userId) {
     var chat = document.getElementById('chatMessages');
     
     if ((lastUserMsg != userId)||(lastUserMsg=="")) {
-        chat.innerHTML += "<b>" + userId + ":</b><br><span id='msg'>" + msg + "</span><br>";
+        chat.innerHTML += "<b>" + userId + ":</b><br><span id='msg'>" + htmlspecialchars(msg) + "</span><br>";
     } else {
-        chat.innerHTML += "<span id='msg'>" + msg + "</span><br>";
+        chat.innerHTML += "<span id='msg'>" + htmlspecialchars(msg) + "</span><br>";
     }
     lastUserMsg = userId;
 });
@@ -81,8 +81,8 @@ function updateUsers() {
 
 function userTemplate(userId, status) {
     if (status == "online") {
-        return "<span id='user'><i class='fas fa-circle'></i> " + userId + "</span>"
+        return "<span id='user'><i class='fas fa-circle'></i> " + htmlspecialchars(userId) + "</span>"
     } else {
-        return "<span id='user'><i class='fas fa-circle' id='offline'></i> " + userId + "</span>"    
+        return "<span id='user'><i class='fas fa-circle' id='offline'></i> " + htmlspecialchars(userId) + "</span>"    
     }
 }
