@@ -30,31 +30,32 @@ io.on('connection', function(socket) {
     console.log(socket.id);
 
     socket.on('login', function(username, password) {
+        var userId = '';
         var loginTestStatement = "SELECT UserExtendedInfo.UserId FROM UserExtendedInfo INNER JOIN Users ON UserExtendedInfo.UserId = Users.UserId WHERE Users.Username = '" + username + "' AND UserExtendedInfo.Password = HASHBYTES('SHA2_256','" + password +  "');";
 
         request = new Request(loginTestStatement, function(err, rowCount, rows) {  
             if (err) {
                 console.log(err);
             } else {
-                console.log(rowCount + ' = ' + rows);
+                if (userId != "") {
+            	    socket.username = username;
+            	    users.push(socket.username);
+            	    console.log(users);
+            	    io.emit('userConnect', socket.username);
+            	    socket.emit('valid-username', users);
+        	    } else {
+            	    socket.emit('invalid-username');
+        	    }
             }
         });
         
         request.on('row', function(columns) {
-            username = columns[0].column.value;
+            columns.forEach(column => {
+                userId = column.value;
+            });
         });
 
         connection.execSql(request);
-        
-        if (username != "") {
-            socket.username = username;
-            users.push(socket.username);
-            console.log(users);
-            io.emit('userConnect', socket.username);
-            socket.emit('valid-username', users);
-        } else {
-            socket.emit('invalid-username');
-        }
     });
 
     socket.on('send-message', function(msgData) {
