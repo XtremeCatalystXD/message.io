@@ -32,14 +32,16 @@ io.on('connection', function(socket) {
     socket.on('login', function(username, password) {
         var loginTestStatement = "SELECT UserExtendedInfo.UserId FROM UserExtendedInfo INNER JOIN Users ON UserExtendedInfo.UserId = Users.UserId WHERE Users.Username = '" + username + "' AND UserExtendedInfo.Password = HASHBYTES('SHA2_256','" + password +  "');";
 
-        request = new Request(loginTestStatement, function(err) {  
+        request = new Request(loginTestStatement, function(err, rowCount, rows) {  
             if (err) {
                 console.log(err);
+            } else {
+                console.log(rowCount + ' = ' + rows);
             }
         });
         
         request.on('row', function(columns) {
-                console.log(column.metadata.colName.UserId.value);
+            username = columns[0].column.value;
         });
 
         connection.execSql(request);
