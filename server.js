@@ -41,12 +41,37 @@ io.on('connection', function(socket) {
                     createUserRequest = new Request(userCreateStatement, function(err) {  
                         if (err) {
                             console.log(err);
+                            break;
                         } else {
-                            var userExtendedInfoStatement = "INTO dbo.UserExtendedInfo VALUES (" + databaseUserId + ", HASHBYTES('SHA2_256','" + password + "'), '" + email + "', " + name + "," + age + ", null, null)";
                         }
                     });
 
                     connection.execSql(createUserRequest);
+
+                    var getUserId = "SELECT userId FROM dbo.Users WHERE username='" + username + "'";
+                    getUserIdRequest = new Request(getUserId, function(err) {  
+                        if (err) {
+                            console.log(err);
+                            break;
+                        } else {
+                            
+                        }
+                    });
+
+                    getUserIdRequest.on('row', function(columns) {
+                        var databaseUserId = columns[0].value;
+                        console.log(databaseUserId);
+                        var userExtendedInfoStatement = "INSERT INTO dbo.UserExtendedInfo VALUES (" + databaseUserId + ", HASHBYTES('SHA2_256','" + password + "'), '" + email + "', " + name + "," + age + ", null, null)";
+                        addExtendedInfoStatement = new Request(userExtendedInfoStatement, function(err) {  
+                            if (err) {
+                                console.log(err);
+                                socket.emit('userCreationFailed');
+                            } else {
+                                socket.emit('valid-username', users);
+                            }
+                        });
+                        connection.execSql(addExtendedInfoStatement);
+                    });
         	    }
             }
         });

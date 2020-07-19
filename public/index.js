@@ -11,6 +11,25 @@ function login() {
     socket.emit('login', username, password);
 }
 
+function register() {
+    username = document.getElementById('newUsername').value;
+    password = document.getElementById('newPassword').value;
+    confPassword = document.getElementById('newConfPassword').value;
+    email = document.getElementById('newEmail').value;
+    name = document.getElementById('newName').value;
+    age = document.getElementById('newAge').value;
+    if (password === confPassword) {
+        socket.emit('createUser', username, password, email, name, age);
+    } else {
+        document.getElementById('newUserFormMessage').innerHTML = "Please ensure your passwords match.";
+    }
+}
+
+function createUserForm() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('register').style.display = 'flex';
+}
+
 function htmlspecialchars(str) {
     if (typeof(str) == "string") {
         str = str.replace(/&/g, "&amp;"); /* must do &amp; first */
@@ -33,6 +52,7 @@ function sendMessage() {
 
 socket.on('valid-username', function(currentUsers) {
     document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('register').style.display = 'none';
     document.getElementById('content').style.display = 'flex';
     document.getElementById('onlineUsers').style.display = 'flex';
     document.getElementById('userFormMessage').style.display = 'none';

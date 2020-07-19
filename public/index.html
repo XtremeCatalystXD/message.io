@@ -13,7 +13,20 @@
                     <input type="password" id="password" required="required" placeholder="Password">
                     <input type="submit" value="Login">
                 </form>
+                <p>Need to create an account? <a href="javascript:createUserForm()">Click here.</a></p>
                 <span id="userFormMessage"></span>
+            </div>
+            <div id="registerForm">
+                <form id="newUserForm" onsubmit="register(); return false">
+                    <input type="text" id="newUsername" required="required" placeholder="Username" autocomplete="off">
+                    <input type="password" id="newPassword" required="required" placeholder="Password">
+                    <input type="password" id="newConfPassword" required="required" placeholder="Confirm Password">
+                    <input type="email" id="newEmail" required="required" placeholder="Email">
+                    <input type="text" id="newName" required="required" placeholder="Name">
+                    <input type="number" id="newAge" required="required" placeholder="Age">
+                    <input type="submit" value="Register">
+                </form>
+                <span id="newUserFormMessage"></span>
             </div>
             <div id="onlineUsers"></div>
             <div id="content">

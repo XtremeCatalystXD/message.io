@@ -31,6 +31,15 @@ header {
     align-self: center;
 }
 
+#register {
+    font-size: 28px;
+    flex: 2;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
 #content {
     flex: 95;
     display: none;
