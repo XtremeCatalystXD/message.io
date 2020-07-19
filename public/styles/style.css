@@ -31,6 +31,25 @@ header {
     align-self: center;
 }
 
+#registerDiv {
+    font-size: 28px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: 3s opacity;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: 1.5s opacity;
+}
+
 #content {
     flex: 95;
     display: none;

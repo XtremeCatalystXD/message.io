@@ -5,6 +5,26 @@ var onlineUserList = [];
 var offlineUserList = [];
 var currentUserList = [];
 
+//Changing Registration and login page
+//Functions: returnToRegistration & returnToLogin
+function returnToRegistration() {
+    var loginDiv = document.getElementById('loginForm');
+    var registerDiv = document.getElementById('registerDiv');
+    loginDiv.classList.remove('fade-in');
+    loginDiv.classList.add('fade-out');
+    registerDiv.classList.remove('fade-out');
+    registerDiv.classList.add('fade-in');
+}
+
+function returnToLogin() {
+    var loginDiv = document.getElementById('loginForm');
+    var registerDiv = document.getElementById('registerDiv');
+    registerDiv.classList.remove('fade-in');
+    registerDiv.classList.add('fade-out');
+    loginDiv.classList.remove('fade-out');
+    loginDiv.classList.add('fade-in');
+}
+
 function login() {
     username = document.getElementById('username').value;
     password = document.getElementById('password').value;
