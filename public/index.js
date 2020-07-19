@@ -27,7 +27,7 @@ function register() {
 
 function createUserForm() {
     document.getElementById('loginForm').style.display = 'none';
-    document.getElementById('register').style.display = 'flex';
+    document.getElementById('registerForm').style.display = 'flex';
 }
 
 function htmlspecialchars(str) {
