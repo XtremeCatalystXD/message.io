@@ -31,7 +31,7 @@ io.on('connection', function(socket) {
 
     socket.on('createUser', function(username, password, email, name, age) {
 
-        var testEmailStatement = "SELECT * FROM UserId WHERE Users.Email = '" + email + "';";
+        var testEmailStatement = "SELECT * FROM dbo.Users WHERE Username='" + username + "';";
         testEmailRequest = new Request(testEmailStatement, function(err, rowCount) {  
             if (err) {
                 console.log(err);
