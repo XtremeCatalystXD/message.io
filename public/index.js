@@ -1,6 +1,7 @@
 var socket = io();
 var username;
 var lastUserMsg = "";
+var firstLoad = 0;
 var onlineUserList = [];
 var offlineUserList = [];
 var currentUserList = [];
@@ -10,6 +11,10 @@ var currentUserList = [];
 function returnToRegistration() {
     var loginDiv = document.getElementById('loginForm');
     var registerDiv = document.getElementById('registerDiv');
+    if(firstLoad === 0) {
+        firstLoad = 1;
+        registerDiv.classList.remove('fade-start');
+    }
     loginDiv.classList.remove('fade-in');
     loginDiv.classList.add('fade-out');
     registerDiv.classList.remove('fade-out');

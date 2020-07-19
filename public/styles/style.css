@@ -50,6 +50,11 @@ header {
     transition: 1.5s opacity;
 }
 
+.fade-start {
+    opacity: 0;
+    transition: none;
+}
+
 #content {
     flex: 95;
     display: none;

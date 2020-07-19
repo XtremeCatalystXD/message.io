@@ -7,11 +7,11 @@ var io = require('socket.io')(http);
 var users = [];
 var Connection = require('tedious').Connection;
 var config = {
-    userName: 'messageio',  
-    password: 'password',  
-    // server: <ip address>,
+    userName: 'SA',  
+    password: 'al3xalbon23$$',  
+    server: '127.0.0.1',
     options:{
-        database: "messageio"
+        database: "zuchMessageDB"
     }
 };
 var Request = require('tedious').Request;
