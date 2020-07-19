@@ -18,7 +18,7 @@ function register() {
     email = document.getElementById('newEmail').value;
     name = document.getElementById('newName').value;
     age = document.getElementById('newAge').value;
-    if (password === confPassword) {
+    if (password == confPassword) {
         socket.emit('createUser', username, password, email, name, age);
     } else {
         document.getElementById('newUserFormMessage').innerHTML = "Please ensure your passwords match.";
