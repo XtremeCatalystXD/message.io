@@ -7,25 +7,13 @@
     <body>
         <section>
             <header></header>
-            <div id="loginForm" class="fade-in">
+            <div id="loginForm">
                 <form id="userForm" onsubmit="login(); return false">
                     <input type="text" id="username" required="required" placeholder="Username" autocomplete="off">
                     <input type="password" id="password" required="required" placeholder="Password">
                     <input type="submit" value="Login">
                 </form>
-                <button onclick="returnToRegistration()">Register</button>
                 <span id="userFormMessage"></span>
-            </div>
-            <div id="registerDiv" class="fade-out">
-                <form id="registerForm" onsubmit="register(); return false">
-                    <input type="text" id="username" placeholder="Username: e.g. usr1" required />
-                    <input type="text" id="name" placeholder="Name: e.g. John Smith" required />
-                    <input type="email" id="email" placeholder="Email: e.g. email@email.com" required />
-                    <input type="password" id="password" placeholder="Password: e.g. pswd1" required />
-                    <input type="password" id="confirmpassword" placeholder="Confirm Password" required />
-                    <input type="submit" value="Register">
-                </form>
-                <button onclick="returnToLogin()">Use Login</button>
             </div>
             <div id="onlineUsers"></div>
             <div id="content">
