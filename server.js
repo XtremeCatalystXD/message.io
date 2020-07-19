@@ -41,7 +41,6 @@ io.on('connection', function(socket) {
                     createUserRequest = new Request(userCreateStatement, function(err) {  
                         if (err) {
                             console.log(err);
-                            break;
                         } else {
                         }
                     });
@@ -52,7 +51,6 @@ io.on('connection', function(socket) {
                     getUserIdRequest = new Request(getUserId, function(err) {  
                         if (err) {
                             console.log(err);
-                            break;
                         } else {
                             
                         }
