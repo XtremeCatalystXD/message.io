@@ -31,7 +31,7 @@ header {
     align-self: center;
 }
 
-#register {
+#registerForm {
     font-size: 28px;
     flex: 2;
     display: none;
