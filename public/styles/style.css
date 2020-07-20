@@ -47,7 +47,7 @@ header {
 
 .fade-out {
     opacity: 0;
-    transition: 1.5s opacity;
+    transition: 1s opacity;
 }
 
 .fade-start {

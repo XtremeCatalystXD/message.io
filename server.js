@@ -1,25 +1,32 @@
-const port = 3000;
-
+//Package Declarations
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var users = [];
 var Connection = require('tedious').Connection;
+var Request = require('tedious').Request;
+require('dotenv').config();
+
+//Global Variable Instantiation 
+var users = [];
 var config = {
-    userName: 'SA',  
-    password: 'al3xalbon23$$',  
-    server: '127.0.0.1',
+    userName: process.env.DB_SERVER_USRNME,  
+    password: process.env.DB_SERVER_PSWD,  
+    server: process.env.DB_SERVER_IP,
     options:{
-        database: "zuchMessageDB"
+        database: process.env.DB_SERVER_NAME
     }
 };
-var Request = require('tedious').Request;
+const port = process.env.PORT || 3000;
+console.log(port);
 var connection = new Connection(config);
+
+//Socket IO Initial Connection
 connection.on('connect', function(err) {
     console.log(err);
 });
 
+//Open the Port to Listen on for Socket Server
 http.listen(port, function() {
     console.log("Node socket server has started successfully.");
 });
@@ -31,7 +38,7 @@ io.on('connection', function(socket) {
 
     socket.on('createUser', function(username, password, email, name, age) {
 
-        var testEmailStatement = "SELECT * FROM UserId WHERE Users.Email = '" + email + "';";
+        /*var testEmailStatement = "SELECT * FROM UserId WHERE Users.Email = '" + email + "';";
         testEmailRequest = new Request(testEmailStatement, function(err, rowCount) {  
             if (err) {
                 console.log(err);
@@ -49,6 +56,16 @@ io.on('connection', function(socket) {
                     connection.execSql(createUserRequest);
         	    }
             }
+        });*/
+        var selectExistingEmail = "SELECT * FROM UserExtendedInfo WHERE Email = '" + email + "';"
+        var selectExistingEmailRequest = new Request(selectExistingEmail, function(err, rowCount) {
+            if(err) {console.log(err);}
+            else {
+                if(rowCount === 0) {
+                    console.log(`No user with the email ${email} exists. A new user can be created`);
+                }
+            }
+
         });
 
         connection.execSql(testEmailRequest);
