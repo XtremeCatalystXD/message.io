@@ -4,7 +4,8 @@
   "description": "Welcome to a project by Blaze252 and Zucchini :) - yeet.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,9 @@
     "express": "^4.16.4",
     "socket.io": "^2.1.1",
     "tedious": "^3.0.1",
-    "dotenv": "8.2.0"
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

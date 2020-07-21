@@ -10,7 +10,7 @@ var currentUserList = [];
 //Functions: returnToRegistration & returnToLogin
 function returnToRegistration() {
     var loginDiv = document.getElementById('loginForm');
-    var registerDiv = document.getElementById('registerDiv');
+    var registerDiv = document.getElementById('registerForm');
     if(firstLoad === 0) {
         firstLoad = 1;
         registerDiv.classList.remove('fade-start');
@@ -23,7 +23,7 @@ function returnToRegistration() {
 
 function returnToLogin() {
     var loginDiv = document.getElementById('loginForm');
-    var registerDiv = document.getElementById('registerDiv');
+    var registerDiv = document.getElementById('registerForm');
     registerDiv.classList.remove('fade-in');
     registerDiv.classList.add('fade-out');
     loginDiv.classList.remove('fade-out');
@@ -34,6 +34,18 @@ function login() {
     username = document.getElementById('username').value;
     password = document.getElementById('password').value;
     socket.emit('login', username, password);
+}
+
+function register() {
+    username = document.getElementById('newUsername').value;
+    password = document.getElementById('newPassword').value;
+    confPassword = document.getElementById('newConfPassword').value;
+    email = document.getElementById('newEmail').value;
+    name = document.getElementById('newName').value;
+    age = document.getElementById('newAge').value;
+    if(password == confPassword) {
+        socket.emit('createUser', username, password, email, name, age);
+    } else {document.getElementById('newUserFormMessage').innerHTML = "Please ensure your passwords match.";}
 }
 
 function htmlspecialchars(str) {

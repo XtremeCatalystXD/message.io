@@ -57,18 +57,26 @@ io.on('connection', function(socket) {
         	    }
             }
         });*/
-        var selectExistingEmail = "SELECT * FROM UserExtendedInfo WHERE Email = '" + email + "';"
+
+        //This will add everything appropriate into the table (JUST NEED TO DO ERROR CHECKING / JUSTIFICATION)
+        var selectExistingEmail = `SELECT * FROM UserExtendedInfo WHERE Email = '${email}'; IF @@ROWCOUNT = 0 BEGIN INSERT INTO Users VALUES ('${username}', 0, 'www.avatarurl.com');
+        INSERT INTO UserExtendedInfo VALUES ((SELECT UserId FROM Users WHERE Username = '${username}'), '${email}', '${name}', ${age}, '3', '1', HASHBYTES('SHA2_256', '${password}')) END;`
         var selectExistingEmailRequest = new Request(selectExistingEmail, function(err, rowCount) {
-            if(err) {console.log(err);}
-            else {
-                if(rowCount === 0) {
-                    console.log(`No user with the email ${email} exists. A new user can be created`);
-                }
+            if(err) {
+                //Hopefully nothing is inserted, when it fails everything fails
+                console.log(err);
+                console.log('Something in the script failed');
+            } else {
+                //If query succeeds, check for existance (return cannot create) and check for non existance (to create user)
+                //No need to check anything else any other number.
+                if(rowCount === 1) {console.log('User with the same email already exists ' + rowCount);}
+                else if(rowCount > 1) {console.log('New User has been added');}
             }
-
+        
         });
+        connection.execSql(selectExistingEmailRequest);
 
-        connection.execSql(testEmailRequest);
+
     });
 
     socket.on('login', function(username, password) {

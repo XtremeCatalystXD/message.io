@@ -16,16 +16,18 @@
                 <button onclick="returnToRegistration()">Register</button>
                 <span id="userFormMessage"></span>
             </div>
-            <div id="registerDiv" class="fade-start">
-                <form id="registerForm" onsubmit="register(); return false">
-                    <input type="text" id="username" placeholder="Username: e.g. usr1" required />
-                    <input type="text" id="name" placeholder="Name: e.g. John Smith" required />
-                    <input type="email" id="email" placeholder="Email: e.g. email@email.com" required />
-                    <input type="password" id="password" placeholder="Password: e.g. pswd1" required />
-                    <input type="password" id="confirmpassword" placeholder="Confirm Password" required />
+            <div id="registerForm" class="fade-start">
+                <form id="newUserForm" onsubmit="register(); return false">
+                    <input type="text" id="newUsername" placeholder="Username: e.g. usr1" required />
+                    <input type="text" id="newName" placeholder="Name: e.g. John Smith" required />
+                    <input type="number" id="newAge" required="required" placeholder="Age">
+                    <input type="email" id="newEmail" placeholder="Email: e.g. email@email.com" required />
+                    <input type="password" id="newPassword" placeholder="Password: e.g. pswd1" required />
+                    <input type="password" id="newConfPassword" placeholder="Confirm Password" required />
                     <input type="submit" value="Register">
                 </form>
                 <button onclick="returnToLogin()">Use Login</button>
+                <span id="newUserFormMessage"></span>
             </div>
             <div id="onlineUsers"></div>
             <div id="content">
