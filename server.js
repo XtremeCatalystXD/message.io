@@ -38,27 +38,7 @@ io.on('connection', function(socket) {
 
     socket.on('createUser', function(username, password, email, name, age) {
 
-        /*var testEmailStatement = "SELECT * FROM UserId WHERE Users.Email = '" + email + "';";
-        testEmailRequest = new Request(testEmailStatement, function(err, rowCount) {  
-            if (err) {
-                console.log(err);
-            } else {
-                if (rowCount == 0) {
-                    var userCreateStatement = "INSERT INTO dbo.Users VALUES ('" + username + "', 1, '" + email + "')";
-                    createUserRequest = new Request(userCreateStatement, function(err) {  
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            var userExtendedInfoStatement = "INTO dbo.UserExtendedInfo VALUES (" + databaseUserId + ", HASHBYTES('SHA2_256','" + password + "'), '" + email + "', " + name + "," + age + ", null, null)";
-                        }
-                    });
-
-                    connection.execSql(createUserRequest);
-        	    }
-            }
-        });*/
-
-        //This will add everything appropriate into the table (JUST NEED TO DO ERROR CHECKING / JUSTIFICATION)
+       //This will add everything appropriate into the table (JUST NEED TO DO ERROR CHECKING / JUSTIFICATION)
         var selectExistingEmail = `SELECT * FROM UserExtendedInfo WHERE Email = '${email}'; IF @@ROWCOUNT = 0 BEGIN INSERT INTO Users VALUES ('${username}', 0, 'www.avatarurl.com');
         INSERT INTO UserExtendedInfo VALUES ((SELECT UserId FROM Users WHERE Username = '${username}'), '${email}', '${name}', ${age}, '3', '1', HASHBYTES('SHA2_256', '${password}')) END;`
         var selectExistingEmailRequest = new Request(selectExistingEmail, function(err, rowCount) {
